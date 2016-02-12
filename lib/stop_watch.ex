@@ -4,7 +4,7 @@ defmodule StopWatch.Application do
   alias Nerves.Hub
   alias Nerves.HubRestApi
 
-  @http_port 8088
+  @http_port 8000
   @api_prefix :api
   @stop_watch_prefix :watch
   @http_path "localhost:#{@http_port}/#{@api_prefix}/#{@stop_watch_prefix}/"
@@ -13,7 +13,8 @@ defmodule StopWatch.Application do
     import Supervisor.Spec, warn: false
     dispatch = :cowboy_router.compile([	{:_, [
       {"/#{@api_prefix}/[...]", HubRestApi, []},
-      {"/[...]", :cowboy_static, {:priv_dir, :stop_watch, "web", [{:mimetypes, :cow_mimetypes, :all}]}},
+      {"/", :cowboy_static, {:priv_file, :stop_watch, "web/index.html"}},
+      {"/[...]", :cowboy_static, {:priv_dir, :stop_watch, "web", [{:mimetypes, :cow_mimetypes, :all}]}}
     ]} ])
     {:ok, _pid} = :cowboy.start_http(:http, 10, [port: @http_port],
       [env: [dispatch: dispatch] ])
