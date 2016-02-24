@@ -4,7 +4,7 @@ defmodule StopWatch.Application do
   alias Nerves.Hub
   alias Nerves.HubRestApi
 
-  @http_port 8000
+  @http_port 8888
   @api_prefix :api
   @stop_watch_prefix :watch
   @http_path "localhost:#{@http_port}/#{@api_prefix}/#{@stop_watch_prefix}/"
