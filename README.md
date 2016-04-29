@@ -17,3 +17,6 @@ mix run --no-halt
 - Now, visit http://localhost:8888/ in another web browser on your machine.
 - Find out your machine's IP address and visit http://x.x.x.x:8888/ from another
 device on the same LAN -- perhaps an iphone or ipad?
+- To view the elm version of the stopwatch app (still a work in progress), 
+  go to http://localhost:8888/stopwatch.html. The elm version was built by running 
+  `elm make Stopwatch.elm --output=../web/stopwatch.html` from the `priv/elm` directory.
