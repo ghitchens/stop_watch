@@ -1,6 +1,7 @@
 import Char
 import Html exposing (..)
 import Html.Attributes as Attr exposing (..)
+import Html.Widgets exposing (..)
 import Html.Events exposing (..)
 import Http
 import Json.Decode as Json exposing ((:=))
@@ -8,9 +9,10 @@ import String
 import Task exposing (..)
 import Time exposing (..)
 import Dict
+import Svg exposing (Svg)
 
 --CONSTANTS
-stopwatchUrl = "/api/watch"
+stopwatchUrl = "http://localhost:8888/api/watch"
 
 -- VIEW
 view : Result (String, Model) Model -> Html
@@ -20,8 +22,8 @@ view result =
       Err tuple -> tuple
       Ok model -> ("", model)
   in
-    div [] [ div [ myStyle ] [ text (toString(toFloat(model.stopwatch.msec) / 1000))] 
-    -- , div [ myStyle ] [ text errMsg ]
+    div [] [ 
+      div [style [("width", "200px"), ("height", "70px")]] [segments model.stopwatch]
     , button [onClick inputMailbox.address Start] [text "Start"]
     , button [onClick inputMailbox.address Stop] [text "Stop"]
     , button [onClick inputMailbox.address Clear] [text "Clear"]
@@ -29,14 +31,15 @@ view result =
       (resolutionOptions model.stopwatch.resolution)
     ]
 
-myStyle : Attribute
-myStyle =
-  style
-    [ ("width", "100%")
-    , ("height", "40px")
-    , ("padding", "10px 0")
-    , ("font-size", "2em")
-    ]
+segments : Stopwatch -> Svg
+segments stopwatch =
+  let props = { defaultSevenSegmentProperties | digits = segments_digits stopwatch, colonIndexes = [], pointIndexes = [ 5 ]}
+      style = { defaultSevenSegmentStyle | textColor = "#DE2", backgroundColor = "#222" }
+  in  sevenSegment props style
+
+segments_digits : Stopwatch -> String
+segments_digits stopwatch = 
+  String.padLeft 8 '-' (toString ((toFloat stopwatch.msec) / 10))
 
 resolutionOptions : Int -> List Html
 resolutionOptions currentResolution = 

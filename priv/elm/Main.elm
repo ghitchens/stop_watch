@@ -37,7 +37,7 @@ main : Signal Html.Html
 main = StartApp.start { model = model, view = view, update = update }
 
 segments_digits : a -> String
-segments_digits a = padLeft 8 '0' (toString a)
+segments_digits a = padLeft 8 ' ' (toString a)
 
 segments : a -> Svg.Svg
 segments a =

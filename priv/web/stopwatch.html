@@ -10703,6 +10703,1235 @@ Elm.Http.make = function (_elm) {
                              ,BadResponse: BadResponse
                              ,RawTimeout: RawTimeout
                              ,RawNetworkError: RawNetworkError};
+};Elm.Svg = Elm.Svg || {};
+Elm.Svg.make = function (_elm) {
+   "use strict";
+   _elm.Svg = _elm.Svg || {};
+   if (_elm.Svg.values) return _elm.Svg.values;
+   var _U = Elm.Native.Utils.make(_elm),
+   $Basics = Elm.Basics.make(_elm),
+   $Debug = Elm.Debug.make(_elm),
+   $Html = Elm.Html.make(_elm),
+   $Json$Encode = Elm.Json.Encode.make(_elm),
+   $List = Elm.List.make(_elm),
+   $Maybe = Elm.Maybe.make(_elm),
+   $Result = Elm.Result.make(_elm),
+   $Signal = Elm.Signal.make(_elm),
+   $VirtualDom = Elm.VirtualDom.make(_elm);
+   var _op = {};
+   var text = $VirtualDom.text;
+   var svgNamespace = A2($VirtualDom.property,"namespace",$Json$Encode.string("http://www.w3.org/2000/svg"));
+   var node = F3(function (name,attributes,children) {    return A3($VirtualDom.node,name,A2($List._op["::"],svgNamespace,attributes),children);});
+   var svg = node("svg");
+   var foreignObject = node("foreignObject");
+   var animate = node("animate");
+   var animateColor = node("animateColor");
+   var animateMotion = node("animateMotion");
+   var animateTransform = node("animateTransform");
+   var mpath = node("mpath");
+   var set = node("set");
+   var a = node("a");
+   var defs = node("defs");
+   var g = node("g");
+   var marker = node("marker");
+   var mask = node("mask");
+   var missingGlyph = node("missingGlyph");
+   var pattern = node("pattern");
+   var $switch = node("switch");
+   var symbol = node("symbol");
+   var desc = node("desc");
+   var metadata = node("metadata");
+   var title = node("title");
+   var feBlend = node("feBlend");
+   var feColorMatrix = node("feColorMatrix");
+   var feComponentTransfer = node("feComponentTransfer");
+   var feComposite = node("feComposite");
+   var feConvolveMatrix = node("feConvolveMatrix");
+   var feDiffuseLighting = node("feDiffuseLighting");
+   var feDisplacementMap = node("feDisplacementMap");
+   var feFlood = node("feFlood");
+   var feFuncA = node("feFuncA");
+   var feFuncB = node("feFuncB");
+   var feFuncG = node("feFuncG");
+   var feFuncR = node("feFuncR");
+   var feGaussianBlur = node("feGaussianBlur");
+   var feImage = node("feImage");
+   var feMerge = node("feMerge");
+   var feMergeNode = node("feMergeNode");
+   var feMorphology = node("feMorphology");
+   var feOffset = node("feOffset");
+   var feSpecularLighting = node("feSpecularLighting");
+   var feTile = node("feTile");
+   var feTurbulence = node("feTurbulence");
+   var font = node("font");
+   var fontFace = node("fontFace");
+   var fontFaceFormat = node("fontFaceFormat");
+   var fontFaceName = node("fontFaceName");
+   var fontFaceSrc = node("fontFaceSrc");
+   var fontFaceUri = node("fontFaceUri");
+   var hkern = node("hkern");
+   var vkern = node("vkern");
+   var linearGradient = node("linearGradient");
+   var radialGradient = node("radialGradient");
+   var stop = node("stop");
+   var circle = node("circle");
+   var ellipse = node("ellipse");
+   var image = node("image");
+   var line = node("line");
+   var path = node("path");
+   var polygon = node("polygon");
+   var polyline = node("polyline");
+   var rect = node("rect");
+   var use = node("use");
+   var feDistantLight = node("feDistantLight");
+   var fePointLight = node("fePointLight");
+   var feSpotLight = node("feSpotLight");
+   var altGlyph = node("altGlyph");
+   var altGlyphDef = node("altGlyphDef");
+   var altGlyphItem = node("altGlyphItem");
+   var glyph = node("glyph");
+   var glyphRef = node("glyphRef");
+   var textPath = node("textPath");
+   var text$ = node("text");
+   var tref = node("tref");
+   var tspan = node("tspan");
+   var clipPath = node("clipPath");
+   var colorProfile = node("colorProfile");
+   var cursor = node("cursor");
+   var filter = node("filter");
+   var script = node("script");
+   var style = node("style");
+   var view = node("view");
+   return _elm.Svg.values = {_op: _op
+                            ,text: text
+                            ,node: node
+                            ,svg: svg
+                            ,foreignObject: foreignObject
+                            ,circle: circle
+                            ,ellipse: ellipse
+                            ,image: image
+                            ,line: line
+                            ,path: path
+                            ,polygon: polygon
+                            ,polyline: polyline
+                            ,rect: rect
+                            ,use: use
+                            ,animate: animate
+                            ,animateColor: animateColor
+                            ,animateMotion: animateMotion
+                            ,animateTransform: animateTransform
+                            ,mpath: mpath
+                            ,set: set
+                            ,desc: desc
+                            ,metadata: metadata
+                            ,title: title
+                            ,a: a
+                            ,defs: defs
+                            ,g: g
+                            ,marker: marker
+                            ,mask: mask
+                            ,missingGlyph: missingGlyph
+                            ,pattern: pattern
+                            ,$switch: $switch
+                            ,symbol: symbol
+                            ,altGlyph: altGlyph
+                            ,altGlyphDef: altGlyphDef
+                            ,altGlyphItem: altGlyphItem
+                            ,glyph: glyph
+                            ,glyphRef: glyphRef
+                            ,textPath: textPath
+                            ,text$: text$
+                            ,tref: tref
+                            ,tspan: tspan
+                            ,font: font
+                            ,fontFace: fontFace
+                            ,fontFaceFormat: fontFaceFormat
+                            ,fontFaceName: fontFaceName
+                            ,fontFaceSrc: fontFaceSrc
+                            ,fontFaceUri: fontFaceUri
+                            ,hkern: hkern
+                            ,vkern: vkern
+                            ,linearGradient: linearGradient
+                            ,radialGradient: radialGradient
+                            ,stop: stop
+                            ,feBlend: feBlend
+                            ,feColorMatrix: feColorMatrix
+                            ,feComponentTransfer: feComponentTransfer
+                            ,feComposite: feComposite
+                            ,feConvolveMatrix: feConvolveMatrix
+                            ,feDiffuseLighting: feDiffuseLighting
+                            ,feDisplacementMap: feDisplacementMap
+                            ,feFlood: feFlood
+                            ,feFuncA: feFuncA
+                            ,feFuncB: feFuncB
+                            ,feFuncG: feFuncG
+                            ,feFuncR: feFuncR
+                            ,feGaussianBlur: feGaussianBlur
+                            ,feImage: feImage
+                            ,feMerge: feMerge
+                            ,feMergeNode: feMergeNode
+                            ,feMorphology: feMorphology
+                            ,feOffset: feOffset
+                            ,feSpecularLighting: feSpecularLighting
+                            ,feTile: feTile
+                            ,feTurbulence: feTurbulence
+                            ,feDistantLight: feDistantLight
+                            ,fePointLight: fePointLight
+                            ,feSpotLight: feSpotLight
+                            ,clipPath: clipPath
+                            ,colorProfile: colorProfile
+                            ,cursor: cursor
+                            ,filter: filter
+                            ,script: script
+                            ,style: style
+                            ,view: view};
+};Elm.Svg = Elm.Svg || {};
+Elm.Svg.Attributes = Elm.Svg.Attributes || {};
+Elm.Svg.Attributes.make = function (_elm) {
+   "use strict";
+   _elm.Svg = _elm.Svg || {};
+   _elm.Svg.Attributes = _elm.Svg.Attributes || {};
+   if (_elm.Svg.Attributes.values) return _elm.Svg.Attributes.values;
+   var _U = Elm.Native.Utils.make(_elm),
+   $Basics = Elm.Basics.make(_elm),
+   $Debug = Elm.Debug.make(_elm),
+   $List = Elm.List.make(_elm),
+   $Maybe = Elm.Maybe.make(_elm),
+   $Result = Elm.Result.make(_elm),
+   $Signal = Elm.Signal.make(_elm),
+   $Svg = Elm.Svg.make(_elm),
+   $VirtualDom = Elm.VirtualDom.make(_elm);
+   var _op = {};
+   var writingMode = $VirtualDom.attribute("writing-mode");
+   var wordSpacing = $VirtualDom.attribute("word-spacing");
+   var visibility = $VirtualDom.attribute("visibility");
+   var unicodeBidi = $VirtualDom.attribute("unicode-bidi");
+   var textRendering = $VirtualDom.attribute("text-rendering");
+   var textDecoration = $VirtualDom.attribute("text-decoration");
+   var textAnchor = $VirtualDom.attribute("text-anchor");
+   var stroke = $VirtualDom.attribute("stroke");
+   var strokeWidth = $VirtualDom.attribute("stroke-width");
+   var strokeOpacity = $VirtualDom.attribute("stroke-opacity");
+   var strokeMiterlimit = $VirtualDom.attribute("stroke-miterlimit");
+   var strokeLinejoin = $VirtualDom.attribute("stroke-linejoin");
+   var strokeLinecap = $VirtualDom.attribute("stroke-linecap");
+   var strokeDashoffset = $VirtualDom.attribute("stroke-dashoffset");
+   var strokeDasharray = $VirtualDom.attribute("stroke-dasharray");
+   var stopOpacity = $VirtualDom.attribute("stop-opacity");
+   var stopColor = $VirtualDom.attribute("stop-color");
+   var shapeRendering = $VirtualDom.attribute("shape-rendering");
+   var pointerEvents = $VirtualDom.attribute("pointer-events");
+   var overflow = $VirtualDom.attribute("overflow");
+   var opacity = $VirtualDom.attribute("opacity");
+   var mask = $VirtualDom.attribute("mask");
+   var markerStart = $VirtualDom.attribute("marker-start");
+   var markerMid = $VirtualDom.attribute("marker-mid");
+   var markerEnd = $VirtualDom.attribute("marker-end");
+   var lightingColor = $VirtualDom.attribute("lighting-color");
+   var letterSpacing = $VirtualDom.attribute("letter-spacing");
+   var kerning = $VirtualDom.attribute("kerning");
+   var imageRendering = $VirtualDom.attribute("image-rendering");
+   var glyphOrientationVertical = $VirtualDom.attribute("glyph-orientation-vertical");
+   var glyphOrientationHorizontal = $VirtualDom.attribute("glyph-orientation-horizontal");
+   var fontWeight = $VirtualDom.attribute("font-weight");
+   var fontVariant = $VirtualDom.attribute("font-variant");
+   var fontStyle = $VirtualDom.attribute("font-style");
+   var fontStretch = $VirtualDom.attribute("font-stretch");
+   var fontSize = $VirtualDom.attribute("font-size");
+   var fontSizeAdjust = $VirtualDom.attribute("font-size-adjust");
+   var fontFamily = $VirtualDom.attribute("font-family");
+   var floodOpacity = $VirtualDom.attribute("flood-opacity");
+   var floodColor = $VirtualDom.attribute("flood-color");
+   var filter = $VirtualDom.attribute("filter");
+   var fill = $VirtualDom.attribute("fill");
+   var fillRule = $VirtualDom.attribute("fill-rule");
+   var fillOpacity = $VirtualDom.attribute("fill-opacity");
+   var enableBackground = $VirtualDom.attribute("enable-background");
+   var dominantBaseline = $VirtualDom.attribute("dominant-baseline");
+   var display = $VirtualDom.attribute("display");
+   var direction = $VirtualDom.attribute("direction");
+   var cursor = $VirtualDom.attribute("cursor");
+   var color = $VirtualDom.attribute("color");
+   var colorRendering = $VirtualDom.attribute("color-rendering");
+   var colorProfile = $VirtualDom.attribute("color-profile");
+   var colorInterpolation = $VirtualDom.attribute("color-interpolation");
+   var colorInterpolationFilters = $VirtualDom.attribute("color-interpolation-filters");
+   var clip = $VirtualDom.attribute("clip");
+   var clipRule = $VirtualDom.attribute("clip-rule");
+   var clipPath = $VirtualDom.attribute("clip-path");
+   var baselineShift = $VirtualDom.attribute("baseline-shift");
+   var alignmentBaseline = $VirtualDom.attribute("alignment-baseline");
+   var zoomAndPan = $VirtualDom.attribute("zoomAndPan");
+   var z = $VirtualDom.attribute("z");
+   var yChannelSelector = $VirtualDom.attribute("yChannelSelector");
+   var y2 = $VirtualDom.attribute("y2");
+   var y1 = $VirtualDom.attribute("y1");
+   var y = $VirtualDom.attribute("y");
+   var xmlSpace = A2($VirtualDom.attributeNS,"http://www.w3.org/XML/1998/namespace","xml:space");
+   var xmlLang = A2($VirtualDom.attributeNS,"http://www.w3.org/XML/1998/namespace","xml:lang");
+   var xmlBase = A2($VirtualDom.attributeNS,"http://www.w3.org/XML/1998/namespace","xml:base");
+   var xlinkType = A2($VirtualDom.attributeNS,"http://www.w3.org/1999/xlink","xlink:type");
+   var xlinkTitle = A2($VirtualDom.attributeNS,"http://www.w3.org/1999/xlink","xlink:title");
+   var xlinkShow = A2($VirtualDom.attributeNS,"http://www.w3.org/1999/xlink","xlink:show");
+   var xlinkRole = A2($VirtualDom.attributeNS,"http://www.w3.org/1999/xlink","xlink:role");
+   var xlinkHref = A2($VirtualDom.attributeNS,"http://www.w3.org/1999/xlink","xlink:href");
+   var xlinkArcrole = A2($VirtualDom.attributeNS,"http://www.w3.org/1999/xlink","xlink:arcrole");
+   var xlinkActuate = A2($VirtualDom.attributeNS,"http://www.w3.org/1999/xlink","xlink:actuate");
+   var xChannelSelector = $VirtualDom.attribute("xChannelSelector");
+   var x2 = $VirtualDom.attribute("x2");
+   var x1 = $VirtualDom.attribute("x1");
+   var xHeight = $VirtualDom.attribute("x-height");
+   var x = $VirtualDom.attribute("x");
+   var widths = $VirtualDom.attribute("widths");
+   var width = $VirtualDom.attribute("width");
+   var viewTarget = $VirtualDom.attribute("viewTarget");
+   var viewBox = $VirtualDom.attribute("viewBox");
+   var vertOriginY = $VirtualDom.attribute("vert-origin-y");
+   var vertOriginX = $VirtualDom.attribute("vert-origin-x");
+   var vertAdvY = $VirtualDom.attribute("vert-adv-y");
+   var version = $VirtualDom.attribute("version");
+   var values = $VirtualDom.attribute("values");
+   var vMathematical = $VirtualDom.attribute("v-mathematical");
+   var vIdeographic = $VirtualDom.attribute("v-ideographic");
+   var vHanging = $VirtualDom.attribute("v-hanging");
+   var vAlphabetic = $VirtualDom.attribute("v-alphabetic");
+   var unitsPerEm = $VirtualDom.attribute("units-per-em");
+   var unicodeRange = $VirtualDom.attribute("unicode-range");
+   var unicode = $VirtualDom.attribute("unicode");
+   var underlineThickness = $VirtualDom.attribute("underline-thickness");
+   var underlinePosition = $VirtualDom.attribute("underline-position");
+   var u2 = $VirtualDom.attribute("u2");
+   var u1 = $VirtualDom.attribute("u1");
+   var type$ = $VirtualDom.attribute("type");
+   var transform = $VirtualDom.attribute("transform");
+   var to = $VirtualDom.attribute("to");
+   var title = $VirtualDom.attribute("title");
+   var textLength = $VirtualDom.attribute("textLength");
+   var targetY = $VirtualDom.attribute("targetY");
+   var targetX = $VirtualDom.attribute("targetX");
+   var target = $VirtualDom.attribute("target");
+   var tableValues = $VirtualDom.attribute("tableValues");
+   var systemLanguage = $VirtualDom.attribute("systemLanguage");
+   var surfaceScale = $VirtualDom.attribute("surfaceScale");
+   var style = $VirtualDom.attribute("style");
+   var string = $VirtualDom.attribute("string");
+   var strikethroughThickness = $VirtualDom.attribute("strikethrough-thickness");
+   var strikethroughPosition = $VirtualDom.attribute("strikethrough-position");
+   var stitchTiles = $VirtualDom.attribute("stitchTiles");
+   var stemv = $VirtualDom.attribute("stemv");
+   var stemh = $VirtualDom.attribute("stemh");
+   var stdDeviation = $VirtualDom.attribute("stdDeviation");
+   var startOffset = $VirtualDom.attribute("startOffset");
+   var spreadMethod = $VirtualDom.attribute("spreadMethod");
+   var speed = $VirtualDom.attribute("speed");
+   var specularExponent = $VirtualDom.attribute("specularExponent");
+   var specularConstant = $VirtualDom.attribute("specularConstant");
+   var spacing = $VirtualDom.attribute("spacing");
+   var slope = $VirtualDom.attribute("slope");
+   var seed = $VirtualDom.attribute("seed");
+   var scale = $VirtualDom.attribute("scale");
+   var ry = $VirtualDom.attribute("ry");
+   var rx = $VirtualDom.attribute("rx");
+   var rotate = $VirtualDom.attribute("rotate");
+   var result = $VirtualDom.attribute("result");
+   var restart = $VirtualDom.attribute("restart");
+   var requiredFeatures = $VirtualDom.attribute("requiredFeatures");
+   var requiredExtensions = $VirtualDom.attribute("requiredExtensions");
+   var repeatDur = $VirtualDom.attribute("repeatDur");
+   var repeatCount = $VirtualDom.attribute("repeatCount");
+   var renderingIntent = $VirtualDom.attribute("rendering-intent");
+   var refY = $VirtualDom.attribute("refY");
+   var refX = $VirtualDom.attribute("refX");
+   var radius = $VirtualDom.attribute("radius");
+   var r = $VirtualDom.attribute("r");
+   var primitiveUnits = $VirtualDom.attribute("primitiveUnits");
+   var preserveAspectRatio = $VirtualDom.attribute("preserveAspectRatio");
+   var preserveAlpha = $VirtualDom.attribute("preserveAlpha");
+   var pointsAtZ = $VirtualDom.attribute("pointsAtZ");
+   var pointsAtY = $VirtualDom.attribute("pointsAtY");
+   var pointsAtX = $VirtualDom.attribute("pointsAtX");
+   var points = $VirtualDom.attribute("points");
+   var pointOrder = $VirtualDom.attribute("point-order");
+   var patternUnits = $VirtualDom.attribute("patternUnits");
+   var patternTransform = $VirtualDom.attribute("patternTransform");
+   var patternContentUnits = $VirtualDom.attribute("patternContentUnits");
+   var pathLength = $VirtualDom.attribute("pathLength");
+   var path = $VirtualDom.attribute("path");
+   var panose1 = $VirtualDom.attribute("panose-1");
+   var overlineThickness = $VirtualDom.attribute("overline-thickness");
+   var overlinePosition = $VirtualDom.attribute("overline-position");
+   var origin = $VirtualDom.attribute("origin");
+   var orientation = $VirtualDom.attribute("orientation");
+   var orient = $VirtualDom.attribute("orient");
+   var order = $VirtualDom.attribute("order");
+   var operator = $VirtualDom.attribute("operator");
+   var offset = $VirtualDom.attribute("offset");
+   var numOctaves = $VirtualDom.attribute("numOctaves");
+   var name = $VirtualDom.attribute("name");
+   var mode = $VirtualDom.attribute("mode");
+   var min = $VirtualDom.attribute("min");
+   var method = $VirtualDom.attribute("method");
+   var media = $VirtualDom.attribute("media");
+   var max = $VirtualDom.attribute("max");
+   var mathematical = $VirtualDom.attribute("mathematical");
+   var maskUnits = $VirtualDom.attribute("maskUnits");
+   var maskContentUnits = $VirtualDom.attribute("maskContentUnits");
+   var markerWidth = $VirtualDom.attribute("markerWidth");
+   var markerUnits = $VirtualDom.attribute("markerUnits");
+   var markerHeight = $VirtualDom.attribute("markerHeight");
+   var local = $VirtualDom.attribute("local");
+   var limitingConeAngle = $VirtualDom.attribute("limitingConeAngle");
+   var lengthAdjust = $VirtualDom.attribute("lengthAdjust");
+   var lang = $VirtualDom.attribute("lang");
+   var keyTimes = $VirtualDom.attribute("keyTimes");
+   var keySplines = $VirtualDom.attribute("keySplines");
+   var keyPoints = $VirtualDom.attribute("keyPoints");
+   var kernelUnitLength = $VirtualDom.attribute("kernelUnitLength");
+   var kernelMatrix = $VirtualDom.attribute("kernelMatrix");
+   var k4 = $VirtualDom.attribute("k4");
+   var k3 = $VirtualDom.attribute("k3");
+   var k2 = $VirtualDom.attribute("k2");
+   var k1 = $VirtualDom.attribute("k1");
+   var k = $VirtualDom.attribute("k");
+   var intercept = $VirtualDom.attribute("intercept");
+   var in2 = $VirtualDom.attribute("in2");
+   var in$ = $VirtualDom.attribute("in");
+   var ideographic = $VirtualDom.attribute("ideographic");
+   var id = $VirtualDom.attribute("id");
+   var horizOriginY = $VirtualDom.attribute("horiz-origin-y");
+   var horizOriginX = $VirtualDom.attribute("horiz-origin-x");
+   var horizAdvX = $VirtualDom.attribute("horiz-adv-x");
+   var height = $VirtualDom.attribute("height");
+   var hanging = $VirtualDom.attribute("hanging");
+   var gradientUnits = $VirtualDom.attribute("gradientUnits");
+   var gradientTransform = $VirtualDom.attribute("gradientTransform");
+   var glyphRef = $VirtualDom.attribute("glyphRef");
+   var glyphName = $VirtualDom.attribute("glyph-name");
+   var g2 = $VirtualDom.attribute("g2");
+   var g1 = $VirtualDom.attribute("g1");
+   var fy = $VirtualDom.attribute("fy");
+   var fx = $VirtualDom.attribute("fx");
+   var from = $VirtualDom.attribute("from");
+   var format = $VirtualDom.attribute("format");
+   var filterUnits = $VirtualDom.attribute("filterUnits");
+   var filterRes = $VirtualDom.attribute("filterRes");
+   var externalResourcesRequired = $VirtualDom.attribute("externalResourcesRequired");
+   var exponent = $VirtualDom.attribute("exponent");
+   var end = $VirtualDom.attribute("end");
+   var elevation = $VirtualDom.attribute("elevation");
+   var edgeMode = $VirtualDom.attribute("edgeMode");
+   var dy = $VirtualDom.attribute("dy");
+   var dx = $VirtualDom.attribute("dx");
+   var dur = $VirtualDom.attribute("dur");
+   var divisor = $VirtualDom.attribute("divisor");
+   var diffuseConstant = $VirtualDom.attribute("diffuseConstant");
+   var descent = $VirtualDom.attribute("descent");
+   var decelerate = $VirtualDom.attribute("decelerate");
+   var d = $VirtualDom.attribute("d");
+   var cy = $VirtualDom.attribute("cy");
+   var cx = $VirtualDom.attribute("cx");
+   var contentStyleType = $VirtualDom.attribute("contentStyleType");
+   var contentScriptType = $VirtualDom.attribute("contentScriptType");
+   var clipPathUnits = $VirtualDom.attribute("clipPathUnits");
+   var $class = $VirtualDom.attribute("class");
+   var capHeight = $VirtualDom.attribute("cap-height");
+   var calcMode = $VirtualDom.attribute("calcMode");
+   var by = $VirtualDom.attribute("by");
+   var bias = $VirtualDom.attribute("bias");
+   var begin = $VirtualDom.attribute("begin");
+   var bbox = $VirtualDom.attribute("bbox");
+   var baseProfile = $VirtualDom.attribute("baseProfile");
+   var baseFrequency = $VirtualDom.attribute("baseFrequency");
+   var azimuth = $VirtualDom.attribute("azimuth");
+   var autoReverse = $VirtualDom.attribute("autoReverse");
+   var attributeType = $VirtualDom.attribute("attributeType");
+   var attributeName = $VirtualDom.attribute("attributeName");
+   var ascent = $VirtualDom.attribute("ascent");
+   var arabicForm = $VirtualDom.attribute("arabic-form");
+   var amplitude = $VirtualDom.attribute("amplitude");
+   var allowReorder = $VirtualDom.attribute("allowReorder");
+   var alphabetic = $VirtualDom.attribute("alphabetic");
+   var additive = $VirtualDom.attribute("additive");
+   var accumulate = $VirtualDom.attribute("accumulate");
+   var accelerate = $VirtualDom.attribute("accelerate");
+   var accentHeight = $VirtualDom.attribute("accent-height");
+   return _elm.Svg.Attributes.values = {_op: _op
+                                       ,accentHeight: accentHeight
+                                       ,accelerate: accelerate
+                                       ,accumulate: accumulate
+                                       ,additive: additive
+                                       ,alphabetic: alphabetic
+                                       ,allowReorder: allowReorder
+                                       ,amplitude: amplitude
+                                       ,arabicForm: arabicForm
+                                       ,ascent: ascent
+                                       ,attributeName: attributeName
+                                       ,attributeType: attributeType
+                                       ,autoReverse: autoReverse
+                                       ,azimuth: azimuth
+                                       ,baseFrequency: baseFrequency
+                                       ,baseProfile: baseProfile
+                                       ,bbox: bbox
+                                       ,begin: begin
+                                       ,bias: bias
+                                       ,by: by
+                                       ,calcMode: calcMode
+                                       ,capHeight: capHeight
+                                       ,$class: $class
+                                       ,clipPathUnits: clipPathUnits
+                                       ,contentScriptType: contentScriptType
+                                       ,contentStyleType: contentStyleType
+                                       ,cx: cx
+                                       ,cy: cy
+                                       ,d: d
+                                       ,decelerate: decelerate
+                                       ,descent: descent
+                                       ,diffuseConstant: diffuseConstant
+                                       ,divisor: divisor
+                                       ,dur: dur
+                                       ,dx: dx
+                                       ,dy: dy
+                                       ,edgeMode: edgeMode
+                                       ,elevation: elevation
+                                       ,end: end
+                                       ,exponent: exponent
+                                       ,externalResourcesRequired: externalResourcesRequired
+                                       ,filterRes: filterRes
+                                       ,filterUnits: filterUnits
+                                       ,format: format
+                                       ,from: from
+                                       ,fx: fx
+                                       ,fy: fy
+                                       ,g1: g1
+                                       ,g2: g2
+                                       ,glyphName: glyphName
+                                       ,glyphRef: glyphRef
+                                       ,gradientTransform: gradientTransform
+                                       ,gradientUnits: gradientUnits
+                                       ,hanging: hanging
+                                       ,height: height
+                                       ,horizAdvX: horizAdvX
+                                       ,horizOriginX: horizOriginX
+                                       ,horizOriginY: horizOriginY
+                                       ,id: id
+                                       ,ideographic: ideographic
+                                       ,in$: in$
+                                       ,in2: in2
+                                       ,intercept: intercept
+                                       ,k: k
+                                       ,k1: k1
+                                       ,k2: k2
+                                       ,k3: k3
+                                       ,k4: k4
+                                       ,kernelMatrix: kernelMatrix
+                                       ,kernelUnitLength: kernelUnitLength
+                                       ,keyPoints: keyPoints
+                                       ,keySplines: keySplines
+                                       ,keyTimes: keyTimes
+                                       ,lang: lang
+                                       ,lengthAdjust: lengthAdjust
+                                       ,limitingConeAngle: limitingConeAngle
+                                       ,local: local
+                                       ,markerHeight: markerHeight
+                                       ,markerUnits: markerUnits
+                                       ,markerWidth: markerWidth
+                                       ,maskContentUnits: maskContentUnits
+                                       ,maskUnits: maskUnits
+                                       ,mathematical: mathematical
+                                       ,max: max
+                                       ,media: media
+                                       ,method: method
+                                       ,min: min
+                                       ,mode: mode
+                                       ,name: name
+                                       ,numOctaves: numOctaves
+                                       ,offset: offset
+                                       ,operator: operator
+                                       ,order: order
+                                       ,orient: orient
+                                       ,orientation: orientation
+                                       ,origin: origin
+                                       ,overlinePosition: overlinePosition
+                                       ,overlineThickness: overlineThickness
+                                       ,panose1: panose1
+                                       ,path: path
+                                       ,pathLength: pathLength
+                                       ,patternContentUnits: patternContentUnits
+                                       ,patternTransform: patternTransform
+                                       ,patternUnits: patternUnits
+                                       ,pointOrder: pointOrder
+                                       ,points: points
+                                       ,pointsAtX: pointsAtX
+                                       ,pointsAtY: pointsAtY
+                                       ,pointsAtZ: pointsAtZ
+                                       ,preserveAlpha: preserveAlpha
+                                       ,preserveAspectRatio: preserveAspectRatio
+                                       ,primitiveUnits: primitiveUnits
+                                       ,r: r
+                                       ,radius: radius
+                                       ,refX: refX
+                                       ,refY: refY
+                                       ,renderingIntent: renderingIntent
+                                       ,repeatCount: repeatCount
+                                       ,repeatDur: repeatDur
+                                       ,requiredExtensions: requiredExtensions
+                                       ,requiredFeatures: requiredFeatures
+                                       ,restart: restart
+                                       ,result: result
+                                       ,rotate: rotate
+                                       ,rx: rx
+                                       ,ry: ry
+                                       ,scale: scale
+                                       ,seed: seed
+                                       ,slope: slope
+                                       ,spacing: spacing
+                                       ,specularConstant: specularConstant
+                                       ,specularExponent: specularExponent
+                                       ,speed: speed
+                                       ,spreadMethod: spreadMethod
+                                       ,startOffset: startOffset
+                                       ,stdDeviation: stdDeviation
+                                       ,stemh: stemh
+                                       ,stemv: stemv
+                                       ,stitchTiles: stitchTiles
+                                       ,strikethroughPosition: strikethroughPosition
+                                       ,strikethroughThickness: strikethroughThickness
+                                       ,string: string
+                                       ,style: style
+                                       ,surfaceScale: surfaceScale
+                                       ,systemLanguage: systemLanguage
+                                       ,tableValues: tableValues
+                                       ,target: target
+                                       ,targetX: targetX
+                                       ,targetY: targetY
+                                       ,textLength: textLength
+                                       ,title: title
+                                       ,to: to
+                                       ,transform: transform
+                                       ,type$: type$
+                                       ,u1: u1
+                                       ,u2: u2
+                                       ,underlinePosition: underlinePosition
+                                       ,underlineThickness: underlineThickness
+                                       ,unicode: unicode
+                                       ,unicodeRange: unicodeRange
+                                       ,unitsPerEm: unitsPerEm
+                                       ,vAlphabetic: vAlphabetic
+                                       ,vHanging: vHanging
+                                       ,vIdeographic: vIdeographic
+                                       ,vMathematical: vMathematical
+                                       ,values: values
+                                       ,version: version
+                                       ,vertAdvY: vertAdvY
+                                       ,vertOriginX: vertOriginX
+                                       ,vertOriginY: vertOriginY
+                                       ,viewBox: viewBox
+                                       ,viewTarget: viewTarget
+                                       ,width: width
+                                       ,widths: widths
+                                       ,x: x
+                                       ,xHeight: xHeight
+                                       ,x1: x1
+                                       ,x2: x2
+                                       ,xChannelSelector: xChannelSelector
+                                       ,xlinkActuate: xlinkActuate
+                                       ,xlinkArcrole: xlinkArcrole
+                                       ,xlinkHref: xlinkHref
+                                       ,xlinkRole: xlinkRole
+                                       ,xlinkShow: xlinkShow
+                                       ,xlinkTitle: xlinkTitle
+                                       ,xlinkType: xlinkType
+                                       ,xmlBase: xmlBase
+                                       ,xmlLang: xmlLang
+                                       ,xmlSpace: xmlSpace
+                                       ,y: y
+                                       ,y1: y1
+                                       ,y2: y2
+                                       ,yChannelSelector: yChannelSelector
+                                       ,z: z
+                                       ,zoomAndPan: zoomAndPan
+                                       ,alignmentBaseline: alignmentBaseline
+                                       ,baselineShift: baselineShift
+                                       ,clipPath: clipPath
+                                       ,clipRule: clipRule
+                                       ,clip: clip
+                                       ,colorInterpolationFilters: colorInterpolationFilters
+                                       ,colorInterpolation: colorInterpolation
+                                       ,colorProfile: colorProfile
+                                       ,colorRendering: colorRendering
+                                       ,color: color
+                                       ,cursor: cursor
+                                       ,direction: direction
+                                       ,display: display
+                                       ,dominantBaseline: dominantBaseline
+                                       ,enableBackground: enableBackground
+                                       ,fillOpacity: fillOpacity
+                                       ,fillRule: fillRule
+                                       ,fill: fill
+                                       ,filter: filter
+                                       ,floodColor: floodColor
+                                       ,floodOpacity: floodOpacity
+                                       ,fontFamily: fontFamily
+                                       ,fontSizeAdjust: fontSizeAdjust
+                                       ,fontSize: fontSize
+                                       ,fontStretch: fontStretch
+                                       ,fontStyle: fontStyle
+                                       ,fontVariant: fontVariant
+                                       ,fontWeight: fontWeight
+                                       ,glyphOrientationHorizontal: glyphOrientationHorizontal
+                                       ,glyphOrientationVertical: glyphOrientationVertical
+                                       ,imageRendering: imageRendering
+                                       ,kerning: kerning
+                                       ,letterSpacing: letterSpacing
+                                       ,lightingColor: lightingColor
+                                       ,markerEnd: markerEnd
+                                       ,markerMid: markerMid
+                                       ,markerStart: markerStart
+                                       ,mask: mask
+                                       ,opacity: opacity
+                                       ,overflow: overflow
+                                       ,pointerEvents: pointerEvents
+                                       ,shapeRendering: shapeRendering
+                                       ,stopColor: stopColor
+                                       ,stopOpacity: stopOpacity
+                                       ,strokeDasharray: strokeDasharray
+                                       ,strokeDashoffset: strokeDashoffset
+                                       ,strokeLinecap: strokeLinecap
+                                       ,strokeLinejoin: strokeLinejoin
+                                       ,strokeMiterlimit: strokeMiterlimit
+                                       ,strokeOpacity: strokeOpacity
+                                       ,strokeWidth: strokeWidth
+                                       ,stroke: stroke
+                                       ,textAnchor: textAnchor
+                                       ,textDecoration: textDecoration
+                                       ,textRendering: textRendering
+                                       ,unicodeBidi: unicodeBidi
+                                       ,visibility: visibility
+                                       ,wordSpacing: wordSpacing
+                                       ,writingMode: writingMode};
+};Elm.Html = Elm.Html || {};
+Elm.Html.Widgets = Elm.Html.Widgets || {};
+Elm.Html.Widgets.make = function (_elm) {
+   "use strict";
+   _elm.Html = _elm.Html || {};
+   _elm.Html.Widgets = _elm.Html.Widgets || {};
+   if (_elm.Html.Widgets.values) return _elm.Html.Widgets.values;
+   var _U = Elm.Native.Utils.make(_elm),
+   $Basics = Elm.Basics.make(_elm),
+   $Debug = Elm.Debug.make(_elm),
+   $List = Elm.List.make(_elm),
+   $Maybe = Elm.Maybe.make(_elm),
+   $Result = Elm.Result.make(_elm),
+   $Signal = Elm.Signal.make(_elm),
+   $String = Elm.String.make(_elm),
+   $Svg = Elm.Svg.make(_elm),
+   $Svg$Attributes = Elm.Svg.Attributes.make(_elm);
+   var _op = {};
+   var knobSegment = F6(function (properties,style,innerRadius,outerRadius,_p0,angle) {
+      var _p1 = _p0;
+      var _p5 = _p1._1;
+      var _p4 = _p1._0;
+      var indexedAngle = (angle + properties.rangeAngleMin) * ($Basics.pi / 180);
+      var _p2 = $Basics.fromPolar({ctor: "_Tuple2",_0: innerRadius,_1: indexedAngle});
+      var x1$ = _p2._0;
+      var y1$ = _p2._1;
+      var _p3 = $Basics.fromPolar({ctor: "_Tuple2",_0: outerRadius,_1: indexedAngle});
+      var x2$ = _p3._0;
+      var y2$ = _p3._1;
+      return A2($Svg.g,
+      _U.list([]),
+      _U.list([A2($Svg.line,
+      _U.list([$Svg$Attributes.x1($Basics.toString(x1$ + _p4))
+              ,$Svg$Attributes.y1($Basics.toString(y1$ + _p5))
+              ,$Svg$Attributes.x2($Basics.toString(x2$ + _p4))
+              ,$Svg$Attributes.y2($Basics.toString(y2$ + _p5))
+              ,$Svg$Attributes.$class($Basics.toString(angle))
+              ,$Svg$Attributes.style(A2($Basics._op["++"],"stroke:",A2($Basics._op["++"],style.segmentColor,";stroke-width:2")))]),
+      _U.list([]))]));
+   });
+   var knobSegmentWithLabel = F7(function (properties,style,innerRadius,outerRadius,_p6,angle,labelValue) {
+      var _p7 = _p6;
+      var _p12 = _p7._1;
+      var _p11 = _p7._0;
+      var piAngle = (angle + properties.rangeAngleMin) * ($Basics.pi / 180);
+      var _p8 = $Basics.fromPolar({ctor: "_Tuple2",_0: innerRadius,_1: piAngle});
+      var x1$ = _p8._0;
+      var y1$ = _p8._1;
+      var _p9 = $Basics.fromPolar({ctor: "_Tuple2",_0: outerRadius,_1: piAngle});
+      var x2$ = _p9._0;
+      var y2$ = _p9._1;
+      var labelRadius = outerRadius + 10;
+      var _p10 = $Basics.fromPolar({ctor: "_Tuple2",_0: labelRadius,_1: piAngle});
+      var x3$ = _p10._0;
+      var y3$ = _p10._1;
+      return A2($Svg.g,
+      _U.list([]),
+      _U.list([A2($Svg.line,
+              _U.list([$Svg$Attributes.x1($Basics.toString(x1$ + _p11))
+                      ,$Svg$Attributes.y1($Basics.toString(y1$ + _p12))
+                      ,$Svg$Attributes.x2($Basics.toString(x2$ + _p11))
+                      ,$Svg$Attributes.y2($Basics.toString(y2$ + _p12))
+                      ,$Svg$Attributes.$class($Basics.toString(piAngle))
+                      ,$Svg$Attributes.style(A2($Basics._op["++"],"stroke:",A2($Basics._op["++"],style.segmentColor,";stroke-width:2")))]),
+              _U.list([]))
+              ,A2($Svg.text$,
+              _U.list([$Svg$Attributes.x($Basics.toString(x3$ + _p11))
+                      ,$Svg$Attributes.y($Basics.toString(y3$ + _p12 + 4))
+                      ,$Svg$Attributes.textAnchor("middle")]),
+              _U.list([$Svg.text($Basics.toString(labelValue))]))]));
+   });
+   var knobHandle = F4(function (properties,style,range,_p13) {
+      var _p14 = _p13;
+      var _p16 = _p14._1;
+      var _p15 = _p14._0;
+      var currentValuePercentage = $Basics.toFloat(properties.value) / $Basics.toFloat(properties.maxValue);
+      var currentRangeValue = _U.cmp(properties.rangeAngleMin,properties.rangeAngleMax) > -1 ? A3($Basics.clamp,
+      properties.rangeAngleMin,
+      360 + properties.rangeAngleMax,
+      currentValuePercentage * range + properties.rangeAngleMin) : A3($Basics.clamp,
+      properties.rangeAngleMin,
+      properties.rangeAngleMax,
+      currentValuePercentage * range + properties.rangeAngleMin);
+      return A2($Svg.g,
+      _U.list([$Svg$Attributes.transform(A2($Basics._op["++"],
+      "rotate(",
+      A2($Basics._op["++"],
+      $Basics.toString(currentRangeValue),
+      A2($Basics._op["++"]," ",A2($Basics._op["++"],$Basics.toString(_p15),A2($Basics._op["++"],",",A2($Basics._op["++"],$Basics.toString(_p16),")")))))))]),
+      _U.list([A2($Svg.circle,
+              _U.list([$Svg$Attributes.cx($Basics.toString(_p15))
+                      ,$Svg$Attributes.cy($Basics.toString(_p16))
+                      ,$Svg$Attributes.r("112")
+                      ,$Svg$Attributes.fill(style.knobColor)]),
+              _U.list([]))
+              ,A2($Svg.circle,
+              _U.list([$Svg$Attributes.cx($Basics.toString(_p15 + 90))
+                      ,$Svg$Attributes.cy($Basics.toString(_p16))
+                      ,$Svg$Attributes.r("10")
+                      ,$Svg$Attributes.fill(style.knobPointerColor)]),
+              _U.list([]))]));
+   });
+   var knob = F2(function (properties,style) {
+      var range = _U.cmp(properties.rangeAngleMin,
+      properties.rangeAngleMax) > -1 ? 360 - properties.rangeAngleMin + properties.rangeAngleMax : properties.rangeAngleMax - properties.rangeAngleMin;
+      var smallSegments = properties.smallSegments;
+      var segments = properties.segments;
+      var barAngle = range / $Basics.toFloat(segments);
+      var barAngles = A2($List.map,function (a) {    return $Basics.toFloat(a) * barAngle;},_U.range(0,properties.segments));
+      var smallBarAngle = range / $Basics.toFloat(segments + smallSegments);
+      var barSmallAngles = A2($List.map,
+      function (a) {
+         return $Basics.toFloat(a) * smallBarAngle;
+      },
+      _U.range(0,properties.smallSegments + properties.segments));
+      var labelValuePerUnit = $Basics.toFloat(properties.maxValue) / $Basics.toFloat(segments);
+      var labelValues = A2($List.map,function (s) {    return $Basics.round($Basics.toFloat(s) * labelValuePerUnit);},_U.range(0,segments));
+      var centerY = 340 / 2;
+      var centerX = 340 / 2;
+      var smallBarHeight = 7;
+      var barHeight = 15;
+      var radius = 120;
+      var middleRadius = radius + smallBarHeight;
+      var largeRadius = radius + barHeight;
+      var containerHeight = 340;
+      var containerWidth = 340;
+      return A2($Svg.svg,
+      _U.list([$Svg$Attributes.version("1.1")
+              ,$Svg$Attributes.$class($Basics.toString(range))
+              ,$Svg$Attributes.height("100%")
+              ,$Svg$Attributes.width("100%")
+              ,$Svg$Attributes.x("0")
+              ,$Svg$Attributes.y("0")
+              ,$Svg$Attributes.viewBox(A2($Basics._op["++"],
+              "0 0 ",
+              A2($Basics._op["++"],$Basics.toString(containerWidth),A2($Basics._op["++"]," ",$Basics.toString(containerHeight)))))]),
+      A2($Basics._op["++"],
+      A3($List.map2,A5(knobSegmentWithLabel,properties,style,radius,largeRadius,{ctor: "_Tuple2",_0: centerX,_1: centerY}),barAngles,labelValues),
+      A2($Basics._op["++"],
+      A2($List.map,A5(knobSegment,properties,style,radius,middleRadius,{ctor: "_Tuple2",_0: centerX,_1: centerY}),barSmallAngles),
+      _U.list([A4(knobHandle,properties,style,range,{ctor: "_Tuple2",_0: centerX,_1: centerY})]))));
+   });
+   var simulatedAnalogMeterPointer = F2(function (properties,style) {
+      var percentage = A3($Basics.clamp,-50,50,$Basics.toFloat(properties.currentValue) / $Basics.toFloat(properties.maxValue) * 100 - 50);
+      return A2($Svg.g,
+      _U.list([$Svg$Attributes.transform(A2($Basics._op["++"],"rotate(",A2($Basics._op["++"],$Basics.toString(percentage)," 204,300)")))]),
+      _U.list([A2($Svg.polygon,_U.list([$Svg$Attributes.points("199,300 203,62 205,62 209,300"),$Svg$Attributes.fill(style.foreColor)]),_U.list([]))]));
+   });
+   var simulatedAnalogMeterSmallBar = F6(function (x$,y$,rotation,percentage,properties,style) {
+      var valueToCheck = percentage * $Basics.toFloat(properties.maxValue);
+      var ranges = properties.ranges;
+      var getRange = A2($List.filter,function (r) {    return _U.cmp(r.minValue,valueToCheck) < 1 && _U.cmp(valueToCheck,r.maxValue) < 1;},ranges);
+      var rangeFound = A2($List.take,1,getRange);
+      var foreColor = function () {
+         var _p17 = rangeFound;
+         if (_p17.ctor === "::" && _p17._1.ctor === "[]") {
+               return _U.cmp($Basics.toFloat(properties.currentValue),valueToCheck) < 1 ? style.foreColor : _p17._0.color;
+            } else {
+               return style.foreColor;
+            }
+      }();
+      var width$ = 6;
+      var height$ = 10;
+      return A2($Svg.rect,
+      _U.list([$Svg$Attributes.x($Basics.toString(x$))
+              ,$Svg$Attributes.y($Basics.toString(y$))
+              ,$Svg$Attributes.fill(foreColor)
+              ,$Svg$Attributes.width($Basics.toString(width$))
+              ,$Svg$Attributes.height($Basics.toString(height$))
+              ,$Svg$Attributes.transform(A2($Basics._op["++"],
+              "rotate(",
+              A2($Basics._op["++"],
+              $Basics.toString(rotation),
+              A2($Basics._op["++"],
+              " ",
+              A2($Basics._op["++"],
+              $Basics.toString(x$ + (width$ - 10) / 2),
+              A2($Basics._op["++"],",",A2($Basics._op["++"],$Basics.toString(y$ + height$ / 2),")")))))))]),
+      _U.list([]));
+   });
+   var simulatedAnalogMeterBar = F6(function (x$,y$,rotation,percentage,properties,style) {
+      var valueToCheck = percentage * $Basics.toFloat(properties.maxValue);
+      var ranges = properties.ranges;
+      var getRange = A2($List.filter,function (r) {    return _U.cmp(r.minValue,valueToCheck) < 1 && _U.cmp(valueToCheck,r.maxValue) < 1;},ranges);
+      var rangeFound = A2($List.take,1,getRange);
+      var foreColor = function () {
+         var _p18 = rangeFound;
+         if (_p18.ctor === "::" && _p18._1.ctor === "[]") {
+               return _U.cmp($Basics.toFloat(properties.currentValue),valueToCheck) < 1 ? style.foreColor : _p18._0.color;
+            } else {
+               return style.foreColor;
+            }
+      }();
+      var width$ = 8;
+      var height$ = 20;
+      return A2($Svg.rect,
+      _U.list([$Svg$Attributes.x($Basics.toString(x$))
+              ,$Svg$Attributes.y($Basics.toString(y$))
+              ,$Svg$Attributes.fill(foreColor)
+              ,$Svg$Attributes.width($Basics.toString(width$))
+              ,$Svg$Attributes.height($Basics.toString(height$))
+              ,$Svg$Attributes.transform(A2($Basics._op["++"],
+              "rotate(",
+              A2($Basics._op["++"],
+              $Basics.toString(rotation),
+              A2($Basics._op["++"],
+              " ",
+              A2($Basics._op["++"],
+              $Basics.toString(x$ + (width$ - 10) / 2),
+              A2($Basics._op["++"],",",A2($Basics._op["++"],$Basics.toString(y$ + height$ / 2),")")))))))]),
+      _U.list([]));
+   });
+   var simulatedAnalogMeterLabel = F7(function (x$,y$,rotation,percentage,labelPercentage,properties,style) {
+      var labelPercentageValue = labelPercentage * $Basics.toFloat(properties.maxValue);
+      var valueToCheck = percentage * $Basics.toFloat(properties.maxValue);
+      var ranges = properties.ranges;
+      var getRange = A2($List.filter,function (r) {    return _U.cmp(r.minValue,valueToCheck) < 1 && _U.cmp(valueToCheck,r.maxValue) < 1;},ranges);
+      var rangeFound = A2($List.take,1,getRange);
+      var foreColor = function () {
+         var _p19 = rangeFound;
+         if (_p19.ctor === "::" && _p19._1.ctor === "[]") {
+               return _U.cmp($Basics.toFloat(properties.currentValue),valueToCheck) < 1 ? style.foreColor : _p19._0.color;
+            } else {
+               return style.foreColor;
+            }
+      }();
+      return A2($Svg.text$,
+      _U.list([$Svg$Attributes.x($Basics.toString(x$))
+              ,$Svg$Attributes.y($Basics.toString(y$))
+              ,$Svg$Attributes.fill(foreColor)
+              ,$Svg$Attributes.$class($Basics.toString(properties.currentValue))
+              ,$Svg$Attributes.textAnchor("middle")
+              ,$Svg$Attributes.transform(A2($Basics._op["++"],
+              "rotate(",
+              A2($Basics._op["++"],
+              $Basics.toString(rotation),
+              A2($Basics._op["++"],
+              " ",
+              A2($Basics._op["++"],$Basics.toString(x$),A2($Basics._op["++"],",",A2($Basics._op["++"],$Basics.toString(y$),")")))))))]),
+      _U.list([$Svg.text($Basics.toString(labelPercentageValue))]));
+   });
+   var simulatedAnalogMeterLabels = F2(function (properties,style) {
+      return A2($Svg.g,
+      _U.list([]),
+      _U.list([A7(simulatedAnalogMeterLabel,-10,110,-45,0,0,properties,style)
+              ,A7(simulatedAnalogMeterLabel,97,47,-24,0.244,0.25,properties,style)
+              ,A7(simulatedAnalogMeterLabel,202,30,0,0.49,0.5,properties,style)
+              ,A7(simulatedAnalogMeterLabel,312,51,24,0.749,0.75,properties,style)
+              ,A7(simulatedAnalogMeterLabel,416,114,45,0.99,1,properties,style)]));
+   });
+   var simulatedAnalogMeterBars = F2(function (properties,style) {
+      return A2($Svg.g,
+      _U.list([]),
+      _U.list([A6(simulatedAnalogMeterBar,0.0,114,-45,0,properties,style)
+              ,A6(simulatedAnalogMeterSmallBar,25,97,-37,6.2e-2,properties,style)
+              ,A6(simulatedAnalogMeterSmallBar,50,79,-34,0.125,properties,style)
+              ,A6(simulatedAnalogMeterSmallBar,75,67,-30,0.187,properties,style)
+              ,A6(simulatedAnalogMeterBar,100,54,-24,0.249,properties,style)
+              ,A6(simulatedAnalogMeterSmallBar,125,50,-18,0.312,properties,style)
+              ,A6(simulatedAnalogMeterSmallBar,150,45,-11,0.375,properties,style)
+              ,A6(simulatedAnalogMeterSmallBar,175,42,-6,0.437,properties,style)
+              ,A6(simulatedAnalogMeterBar,200,38,0,0.499,properties,style)
+              ,A6(simulatedAnalogMeterSmallBar,225,42,6,0.562,properties,style)
+              ,A6(simulatedAnalogMeterSmallBar,250,45,11,0.625,properties,style)
+              ,A6(simulatedAnalogMeterSmallBar,275,50,18,0.687,properties,style)
+              ,A6(simulatedAnalogMeterBar,300,54,24,0.75,properties,style)
+              ,A6(simulatedAnalogMeterSmallBar,325,67,30,0.812,properties,style)
+              ,A6(simulatedAnalogMeterSmallBar,350,79,34,0.875,properties,style)
+              ,A6(simulatedAnalogMeterSmallBar,375,97,37,0.937,properties,style)
+              ,A6(simulatedAnalogMeterBar,400,114,45,0.999,properties,style)]));
+   });
+   var simulatedAnalogMeter = F2(function (properties,style$) {
+      var containerHeight = 200;
+      var containerWidth = 400;
+      return A2($Svg.svg,
+      _U.list([$Svg$Attributes.style("background:#000")
+              ,$Svg$Attributes.version("1.1")
+              ,$Svg$Attributes.height("100%")
+              ,$Svg$Attributes.width("100%")
+              ,$Svg$Attributes.x("0")
+              ,$Svg$Attributes.y("0")
+              ,$Svg$Attributes.viewBox(A2($Basics._op["++"],
+              "0 0 ",
+              A2($Basics._op["++"],$Basics.toString(containerWidth),A2($Basics._op["++"]," ",$Basics.toString(containerHeight)))))]),
+      _U.list([A2($Svg.rect,
+              _U.list([$Svg$Attributes.fill(style$.backgroundColor)
+                      ,$Svg$Attributes.x("2")
+                      ,$Svg$Attributes.width($Basics.toString(containerWidth))
+                      ,$Svg$Attributes.height($Basics.toString(containerHeight))]),
+              _U.list([]))
+              ,A2(simulatedAnalogMeterBars,properties,style$)
+              ,A2(simulatedAnalogMeterLabels,properties,style$)
+              ,A2(simulatedAnalogMeterPointer,properties,style$)]));
+   });
+   var segmentedBarGraphBar = F4(function (_p20,properties,style,index) {
+      var _p21 = _p20;
+      var _p23 = _p21._0;
+      var ranges = properties.ranges;
+      var barValue = $Basics.toFloat(index) / $Basics.toFloat(properties.segments) * $Basics.toFloat(properties.maxValue);
+      var getRange = A2($List.filter,function (r) {    return _U.cmp(r.minValue,barValue) < 1 && _U.cmp(barValue,r.maxValue) < 1;},ranges);
+      var rangeFound = A2($List.take,1,getRange);
+      var barColor = function () {
+         var _p22 = rangeFound;
+         if (_p22.ctor === "::" && _p22._1.ctor === "[]") {
+               return _U.cmp($Basics.toFloat(properties.currentValue),barValue) < 1 ? style.emptyColor : _p22._0.color;
+            } else {
+               return style.emptyColor;
+            }
+      }();
+      var transformAttribute = $Svg$Attributes.transform(A2($Basics._op["++"],"translate(",A2($Basics._op["++"],$Basics.toString(_p23 * index + 4)," 8)")));
+      return A2($Svg.rect,
+      A2($Basics._op["++"],
+      _U.list([transformAttribute]),
+      _U.list([$Svg$Attributes.$class($Basics.toString(barValue))
+              ,$Svg$Attributes.fill(barColor)
+              ,$Svg$Attributes.width($Basics.toString(_p23 - 8))
+              ,$Svg$Attributes.height($Basics.toString(_p21._1 - 16))])),
+      _U.list([]));
+   });
+   var segmentedBarGraph = F2(function (properties,style) {
+      var containerHeight = 340;
+      var barWidth = 100;
+      return A2($Svg.svg,
+      _U.list([$Svg$Attributes.version("1.1")
+              ,$Svg$Attributes.height("100%")
+              ,$Svg$Attributes.width("100%")
+              ,$Svg$Attributes.x("0")
+              ,$Svg$Attributes.y("0")
+              ,$Svg$Attributes.viewBox(A2($Basics._op["++"],
+              "0 0 ",
+              A2($Basics._op["++"],$Basics.toString(barWidth * properties.segments),A2($Basics._op["++"]," ",$Basics.toString(containerHeight)))))]),
+      A2($Basics._op["++"],
+      _U.list([A2($Svg.rect,_U.list([$Svg$Attributes.fill(style.backgroundColor),$Svg$Attributes.width("100%"),$Svg$Attributes.height("340")]),_U.list([]))]),
+      A2($List.map,A3(segmentedBarGraphBar,{ctor: "_Tuple2",_0: barWidth,_1: containerHeight},properties,style),_U.range(0,properties.segments - 1))));
+   });
+   var seventSegmentColon = F3(function (style,containerWidth,index) {
+      return A2($Svg.g,
+      _U.list([]),
+      _U.list([A2($Svg.circle,
+              _U.list([$Svg$Attributes.cx($Basics.toString((index + 1) * containerWidth))
+                      ,$Svg$Attributes.cy("110")
+                      ,$Svg$Attributes.r("16")
+                      ,$Svg$Attributes.fill(style.textColor)]),
+              _U.list([]))
+              ,A2($Svg.circle,
+              _U.list([$Svg$Attributes.cx($Basics.toString((index + 1) * containerWidth))
+                      ,$Svg$Attributes.cy("230")
+                      ,$Svg$Attributes.r("16")
+                      ,$Svg$Attributes.fill(style.textColor)]),
+              _U.list([]))]));
+   });
+   var seventSegmentColons = F3(function (style,_p24,indexes) {    var _p25 = _p24;return A2($List.map,A2(seventSegmentColon,style,_p25._0),indexes);});
+   var sevenSegmentPoint = F3(function (style,containerWidth,index) {
+      return A2($Svg.g,
+      _U.list([]),
+      _U.list([A2($Svg.circle,
+      _U.list([$Svg$Attributes.cx($Basics.toString((index + 1) * containerWidth))
+              ,$Svg$Attributes.cy("300")
+              ,$Svg$Attributes.r("16")
+              ,$Svg$Attributes.fill(style.textColor)]),
+      _U.list([]))]));
+   });
+   var sevenSegmentPoints = F3(function (style,_p26,indexes) {    var _p27 = _p26;return A2($List.map,A2(sevenSegmentPoint,style,_p27._0),indexes);});
+   var sevenSegmentDigitPolygon = F5(function (properties,style,points$,attributes,isOn) {
+      var element = isOn ? A2($Svg.polygon,
+      A2($Basics._op["++"],_U.list([$Svg$Attributes.points(points$),$Svg$Attributes.fill(style.textColor)]),attributes),
+      _U.list([])) : properties.isDimmedWhenOff ? A2($Svg.g,
+      _U.list([]),
+      _U.list([A2($Svg.polygon,A2($Basics._op["++"],_U.list([$Svg$Attributes.points(points$),$Svg$Attributes.fill(style.textColor)]),attributes),_U.list([]))
+              ,A2($Svg.polygon,
+              A2($Basics._op["++"],_U.list([$Svg$Attributes.points(points$),$Svg$Attributes.fill("#000"),$Svg$Attributes.opacity("0.8")]),attributes),
+              _U.list([]))])) : A2($Svg.g,_U.list([]),_U.list([]));
+      return element;
+   });
+   var sevenSegmentDigit = F5(function (properties,style,_p28,index,digit) {
+      var _p29 = _p28;
+      var transformAttribute = $Svg$Attributes.transform(A2($Basics._op["++"],"translate(",A2($Basics._op["++"],$Basics.toString(_p29._0 * index)," 0)")));
+      var newForegroundAttribute = _U.list([transformAttribute]);
+      var segmentA = function (isOn) {
+         return A5(sevenSegmentDigitPolygon,
+         properties,
+         style,
+         " 39.6,  35.4   52.5,  22.1  145.0,  22.1  157.0,  35.4  145.0,  48.2   52.5,  48.2",
+         newForegroundAttribute,
+         isOn);
+      };
+      var segmentB = function (isOn) {
+         return A5(sevenSegmentDigitPolygon,
+         properties,
+         style,
+         "151.4,  53.1  164.3,  41.8  175.5,  53.1  175.5, 150.8  163.5, 163.2  151.4, 151.2",
+         newForegroundAttribute,
+         isOn);
+      };
+      var segmentC = function (isOn) {
+         return A5(sevenSegmentDigitPolygon,
+         properties,
+         style,
+         "163.5, 176.5  175.5, 187.8  175.5, 285.5  163.5, 296.7  151.4, 283.4  151.4, 188.6",
+         newForegroundAttribute,
+         isOn);
+      };
+      var segmentD = function (isOn) {
+         return A5(sevenSegmentDigitPolygon,
+         properties,
+         style,
+         "145.4, 291.1  157.0, 303.9  145.4, 316.0   52.9, 316     40.0, 305.2   52.1, 291.1",
+         newForegroundAttribute,
+         isOn);
+      };
+      var segmentE = function (isOn) {
+         return A5(sevenSegmentDigitPolygon,
+         properties,
+         style,
+         " 45.2, 284.2   33.6, 296.7   22.3, 284.2   22.3, 188.6   33.8, 176.5   45.2, 187.8",
+         newForegroundAttribute,
+         isOn);
+      };
+      var segmentF = function (isOn) {
+         return A5(sevenSegmentDigitPolygon,
+         properties,
+         style,
+         " 33.8, 163.2   22.3, 150.4   22.3,  53.9   33.8,  41.8   45.2,  53.9   47.3, 150  ",
+         newForegroundAttribute,
+         isOn);
+      };
+      var segmentG = function (isOn) {
+         return A5(sevenSegmentDigitPolygon,
+         properties,
+         style,
+         " 39.6, 170     51.7, 156.8  146.2, 156.8  157.0, 170    145.8, 182.9   52.1, 182.9",
+         newForegroundAttribute,
+         isOn);
+      };
+      var segment = F7(function (a,b,c,d,e,f,g) {    return _U.list([segmentA(a),segmentB(b),segmentC(c),segmentD(d),segmentE(e),segmentF(f),segmentG(g)]);});
+      var polygons = function () {
+         var _p30 = digit;
+         switch (_p30.valueOf())
+         {case "0": return A7(segment,true,true,true,true,true,true,false);
+            case "1": return A7(segment,false,true,true,false,false,false,false);
+            case "2": return A7(segment,true,true,false,true,true,false,true);
+            case "3": return A7(segment,true,true,true,true,false,false,true);
+            case "4": return A7(segment,false,true,true,false,false,true,true);
+            case "5": return A7(segment,true,false,true,true,false,true,true);
+            case "6": return A7(segment,true,false,true,true,true,true,true);
+            case "7": return A7(segment,true,true,true,false,false,false,false);
+            case "8": return A7(segment,true,true,true,true,true,true,true);
+            case "9": return A7(segment,true,true,true,true,false,true,true);
+            case " ": return _U.list([]);
+            default: return A7(segment,false,false,false,false,false,false,false);}
+      }();
+      return A2($Svg.g,_U.list([]),polygons);
+   });
+   var sevenSegment = F2(function (properties,style) {
+      var digitLength = $String.length(properties.digits);
+      var containerHeight = 340;
+      var containerWidth = 200;
+      return A2($Svg.svg,
+      _U.list([$Svg$Attributes.version("1.1")
+              ,$Svg$Attributes.height("100%")
+              ,$Svg$Attributes.width("100%")
+              ,$Svg$Attributes.x("0")
+              ,$Svg$Attributes.y("0")
+              ,$Svg$Attributes.viewBox(A2($Basics._op["++"],
+              "0 0 ",
+              A2($Basics._op["++"],$Basics.toString(containerWidth * digitLength),A2($Basics._op["++"]," ",$Basics.toString(containerHeight)))))]),
+      A2($Basics._op["++"],
+      _U.list([A2($Svg.rect,
+      _U.list([$Svg$Attributes.x("0")
+              ,$Svg$Attributes.y("0")
+              ,$Svg$Attributes.width($Basics.toString(containerWidth * digitLength))
+              ,$Svg$Attributes.height($Basics.toString(containerHeight))
+              ,$Svg$Attributes.fill(style.backgroundColor)]),
+      _U.list([]))]),
+      A2($Basics._op["++"],
+      A2($List.indexedMap,A3(sevenSegmentDigit,properties,style,{ctor: "_Tuple2",_0: containerWidth,_1: containerHeight}),$String.toList(properties.digits)),
+      A2($Basics._op["++"],
+      A3(sevenSegmentPoints,style,{ctor: "_Tuple2",_0: containerWidth,_1: containerHeight},properties.pointIndexes),
+      A3(seventSegmentColons,style,{ctor: "_Tuple2",_0: containerWidth,_1: containerHeight},properties.colonIndexes)))));
+   });
+   var defaultMeterRangeAlert = {color: "#F00",minValue: 50.0,maxValue: 100};
+   var defaultMeterRangeOk = {color: "#0F0",minValue: 0,maxValue: 50};
+   var defaultKnobStyle = {segmentColor: "#F44",knobColor: "#444",knobPointerColor: "#F44"};
+   var defaultKnobProperties = {segments: 20,smallSegments: 60,rangeAngleMin: 160,rangeAngleMax: 20,value: 0,maxValue: 100};
+   var defaultSimulatedAnalogMeterStyle = {foreColor: "#fff",backgroundColor: "#000"};
+   var defaultSimulatedAnalogMeterProperties = {currentValue: 50,maxValue: 100,ranges: _U.list([defaultMeterRangeOk,defaultMeterRangeAlert])};
+   var defaultSegmentBarGraphStyle = {emptyColor: "#444",backgroundColor: "#000"};
+   var defaultSegmentedBarGraphProperties = {currentValue: 70,maxValue: 100,segments: 50,ranges: _U.list([defaultMeterRangeOk,defaultMeterRangeAlert])};
+   var defaultSevenSegmentStyle = {backgroundColor: "#000",textColor: "#0F0"};
+   var defaultSevenSegmentProperties = {digits: "1234 4567890",pointIndexes: _U.list([7]),colonIndexes: _U.list([1]),isSlant: false,isDimmedWhenOff: true};
+   var MeterRange = F3(function (a,b,c) {    return {color: a,minValue: b,maxValue: c};});
+   var KnobStyle = F3(function (a,b,c) {    return {segmentColor: a,knobColor: b,knobPointerColor: c};});
+   var KnobProperties = F6(function (a,b,c,d,e,f) {    return {value: a,maxValue: b,segments: c,smallSegments: d,rangeAngleMin: e,rangeAngleMax: f};});
+   var SimulatedAnalogMeterStyle = F2(function (a,b) {    return {foreColor: a,backgroundColor: b};});
+   var SimulatedAnalogMeterProperties = F3(function (a,b,c) {    return {currentValue: a,maxValue: b,ranges: c};});
+   var SegmentedBarGraphStyle = F2(function (a,b) {    return {emptyColor: a,backgroundColor: b};});
+   var SegmentedBarGraphProperties = F4(function (a,b,c,d) {    return {currentValue: a,maxValue: b,segments: c,ranges: d};});
+   var SevenSegmentStyle = F2(function (a,b) {    return {backgroundColor: a,textColor: b};});
+   var SevenSegmentProperties = F5(function (a,b,c,d,e) {    return {digits: a,pointIndexes: b,colonIndexes: c,isSlant: d,isDimmedWhenOff: e};});
+   return _elm.Html.Widgets.values = {_op: _op
+                                     ,sevenSegment: sevenSegment
+                                     ,defaultSevenSegmentProperties: defaultSevenSegmentProperties
+                                     ,defaultSevenSegmentStyle: defaultSevenSegmentStyle
+                                     ,segmentedBarGraph: segmentedBarGraph
+                                     ,defaultSegmentedBarGraphProperties: defaultSegmentedBarGraphProperties
+                                     ,defaultSegmentBarGraphStyle: defaultSegmentBarGraphStyle
+                                     ,simulatedAnalogMeter: simulatedAnalogMeter
+                                     ,defaultSimulatedAnalogMeterProperties: defaultSimulatedAnalogMeterProperties
+                                     ,defaultSimulatedAnalogMeterStyle: defaultSimulatedAnalogMeterStyle
+                                     ,knob: knob
+                                     ,defaultKnobProperties: defaultKnobProperties
+                                     ,defaultKnobStyle: defaultKnobStyle
+                                     ,defaultMeterRangeOk: defaultMeterRangeOk
+                                     ,defaultMeterRangeAlert: defaultMeterRangeAlert
+                                     ,SevenSegmentProperties: SevenSegmentProperties
+                                     ,SevenSegmentStyle: SevenSegmentStyle
+                                     ,SegmentedBarGraphProperties: SegmentedBarGraphProperties
+                                     ,SegmentedBarGraphStyle: SegmentedBarGraphStyle
+                                     ,SimulatedAnalogMeterProperties: SimulatedAnalogMeterProperties
+                                     ,SimulatedAnalogMeterStyle: SimulatedAnalogMeterStyle
+                                     ,KnobProperties: KnobProperties
+                                     ,KnobStyle: KnobStyle
+                                     ,MeterRange: MeterRange};
 };Elm.Main = Elm.Main || {};
 Elm.Main.make = function (_elm) {
    "use strict";
@@ -10715,6 +11944,7 @@ Elm.Main.make = function (_elm) {
    $Html = Elm.Html.make(_elm),
    $Html$Attributes = Elm.Html.Attributes.make(_elm),
    $Html$Events = Elm.Html.Events.make(_elm),
+   $Html$Widgets = Elm.Html.Widgets.make(_elm),
    $Http = Elm.Http.make(_elm),
    $Json$Decode = Elm.Json.Decode.make(_elm),
    $List = Elm.List.make(_elm),
@@ -10722,6 +11952,7 @@ Elm.Main.make = function (_elm) {
    $Result = Elm.Result.make(_elm),
    $Signal = Elm.Signal.make(_elm),
    $String = Elm.String.make(_elm),
+   $Svg = Elm.Svg.make(_elm),
    $Task = Elm.Task.make(_elm);
    var _op = {};
    var handleResponse = F2(function (decoder,response) {
@@ -10789,17 +12020,22 @@ Elm.Main.make = function (_elm) {
       },
       _U.list([10,100,1000]));
    };
-   var myStyle = $Html$Attributes.style(_U.list([{ctor: "_Tuple2",_0: "width",_1: "100%"}
-                                                ,{ctor: "_Tuple2",_0: "height",_1: "40px"}
-                                                ,{ctor: "_Tuple2",_0: "padding",_1: "10px 0"}
-                                                ,{ctor: "_Tuple2",_0: "font-size",_1: "2em"}]));
+   var segments_digits = function (stopwatch) {    return A3($String.padLeft,8,_U.chr("-"),$Basics.toString($Basics.toFloat(stopwatch.msec) / 10));};
+   var segments = function (stopwatch) {
+      var style = _U.update($Html$Widgets.defaultSevenSegmentStyle,{textColor: "#DE2",backgroundColor: "#222"});
+      var props = _U.update($Html$Widgets.defaultSevenSegmentProperties,
+      {digits: segments_digits(stopwatch),colonIndexes: _U.list([]),pointIndexes: _U.list([5])});
+      return A2($Html$Widgets.sevenSegment,props,style);
+   };
    var view = function (result) {
       var _p5 = function () {    var _p6 = result;if (_p6.ctor === "Err") {    return _p6._0;} else {    return {ctor: "_Tuple2",_0: "",_1: _p6._0};}}();
       var errMsg = _p5._0;
       var model = _p5._1;
       return A2($Html.div,
       _U.list([]),
-      _U.list([A2($Html.div,_U.list([myStyle]),_U.list([$Html.text($Basics.toString($Basics.toFloat(model.stopwatch.msec) / 1000))]))
+      _U.list([A2($Html.div,
+              _U.list([$Html$Attributes.style(_U.list([{ctor: "_Tuple2",_0: "width",_1: "200px"},{ctor: "_Tuple2",_0: "height",_1: "70px"}]))]),
+              _U.list([segments(model.stopwatch)]))
               ,A2($Html.button,_U.list([A2($Html$Events.onClick,inputMailbox.address,Start)]),_U.list([$Html.text("Start")]))
               ,A2($Html.button,_U.list([A2($Html$Events.onClick,inputMailbox.address,Stop)]),_U.list([$Html.text("Stop")]))
               ,A2($Html.button,_U.list([A2($Html$Events.onClick,inputMailbox.address,Clear)]),_U.list([$Html.text("Clear")]))
@@ -10813,7 +12049,7 @@ Elm.Main.make = function (_elm) {
               resolutionOptions(model.stopwatch.resolution))]));
    };
    var main = A2($Signal.map,view,longPollMailbox.signal);
-   var stopwatchUrl = "/api/watch";
+   var stopwatchUrl = "http://localhost:8888/api/watch";
    var controlRequest = function (body) {
       var request = {verb: "PUT"
                     ,headers: _U.list([{ctor: "_Tuple2",_0: "Accept",_1: "application/json"},{ctor: "_Tuple2",_0: "Content-Type",_1: "application/json"}])
@@ -10852,7 +12088,8 @@ Elm.Main.make = function (_elm) {
    return _elm.Main.values = {_op: _op
                              ,stopwatchUrl: stopwatchUrl
                              ,view: view
-                             ,myStyle: myStyle
+                             ,segments: segments
+                             ,segments_digits: segments_digits
                              ,resolutionOptions: resolutionOptions
                              ,resolutionToAction: resolutionToAction
                              ,Stopwatch: Stopwatch
