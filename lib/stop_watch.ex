@@ -23,24 +23,45 @@ end
 
 defmodule StopWatch.HubAdapter do
 
+  @moduledoc "Adapts the new Informant-based Stopwatch API to Hub"
+
   use GenServer
   alias Nerves.Hub
 
-  @stop_watch_prefix :watch
+  @hub_path [:watch]
 
-  def start_link() do
-    Hub.update([@stop_watch_prefix], [running: false])
-    #Hub.manage([@stop_watch_prefix], [])
-    spawn_link &run/0
+
+  ## API
+
+  def start_link(options \\ []) do
+    GenServer.start_link(__MODULE__, options, name: __MODULE__)
   end
 
-  # listen for informs of state changes, then update hub
-  defp run() do
-    receive do
+  def stop() do
+    GenServer.stop(__MODULE__)
+  end
 
-         Hub.update([@stop_watch_prefix], changeset)
-    end
-    run()
+  ## Callbacks
+
+  def init(_options) do
+    Informant.subscribe(StopWatch, :_)
+    Hub.update(@hub_path, [running: false])
+    {:ok, true}
+  end
+
+  ## Hub Handlers
+
+  @doc false
+  def handle_call({:request, _path, changes, _context}, _from, state) do
+    StopWatch.request(changes) # REVIEW is it ok not to know state at this point?
+    {:ok, state}
+  end
+
+  ## Stopwatch Informant Handlers
+
+  def handle_info({:notify, source, changes, context}, state) do
+    Hub.update @hub_path ++ [to_string(source)], changes, context
+    {:ok, state} 
   end
 
 end

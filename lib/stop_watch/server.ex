@@ -23,12 +23,11 @@ defmodule StopWatch.Server do
 
   def init() do
     state=%{tref: nil, ticks: 0, running: false, resolution: 100}
+    Informant.register {StopWatch, pid}
     announce(state)
     {:ok, tref} = :timer.send_after(state.resolution, :tick)
     {:ok, %{state | tref: tref}}
   end
-
-  # simple client api
 
   @doc "start the stopwatch"
   def go(pid),    do: GenServer.cast(pid, :go)
@@ -41,6 +40,9 @@ defmodule StopWatch.Server do
 
   @doc "get the current time of the stopwatch"
   def time(pid),  do: GenServer.call(pid, :time)
+
+  @doc "set multiple attributes of the stopwatch"
+  def set(pid, changes), do: GenServer.cast(pid, {:request, :changes})
 
   # public (server) genserver handlers, which modify state
 
@@ -61,7 +63,16 @@ defmodule StopWatch.Server do
     {:reply, state.ticks, state}
   end
 
-  # request handler (hub compatible)
+  # request handler
+
+  def handle_cast({:request, changes}, state) do
+    new_state = Enum.reduce changes, old_state, fn({k,v}, state) ->
+      handle_set(k,v,state)
+    end
+    {:noreply, new_state}
+  end
+
+  # request handler (hub compatible) - replies with new state
 
   def handle_call({:request, _path, changes, _context}, _from, old_state) do
     new_state = Enum.reduce changes, old_state, fn({k,v}, state) ->
