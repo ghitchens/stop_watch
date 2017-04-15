@@ -1,13 +1,16 @@
 defmodule StopWatch.Server do
 
   @moduledoc """
-  A simple stopwatch GenServer used for demonstrating the common pattern
-  of autonomous GenServers that can be optionally bound to Hub.
+  A simple stopwatch GenServer used for exploring the common pattern
+  of autonomous GenServers that make notifications.
 
   Implements a basic counter with configurable resolution
   (down to 10ms).  Implements "go", "stop", and "clear" functions.  Also
   implements a "time" genserver call, to return the number of ms passed.
   Also takes a "resolution" parameter (in ms).
+
+  This branch explores using *Informant* for notifications, with optional
+  connections to Hub and HubRestAPI.
   """
   use GenServer
 
@@ -18,12 +21,8 @@ defmodule StopWatch.Server do
     GenServer.start_link __MODULE__, params, name: :stop_watch
   end
 
-  def init(state \\ nil) do
-    default_state=%{ tref: nil, ticks: 0, running: false, resolution: 10,
-                    announcer: (fn(_)->:ok end) }
-    {initializer, state} = Dict.pop state, :initializer, :nil
-    if initializer, do: initializer.()
-    state = Dict.merge(default_state, state)
+  def init() do
+    state=%{tref: nil, ticks: 0, running: false, resolution: 100}
     announce(state)
     {:ok, tref} = :timer.send_after(state.resolution, :tick)
     {:ok, %{state | tref: tref}}
@@ -47,15 +46,15 @@ defmodule StopWatch.Server do
 
   def handle_cast(:go, state) do
     {:ok, tref} = :timer.send_after(state.resolution, :tick)
-    %{state | running: true, tref: tref} |> announce |> noreply
+    %{state | running: true, tref: tref} |> announce() |> noreply()
   end
 
   def handle_cast(:stop, state) do
-    %{state | running: false} |> announce |> noreply
+    %{state | running: false} |> announce() |> noreply()
   end
 
   def handle_cast(:clear, state) do
-    %{state | ticks: 0} |> announce |> noreply
+    %{state | ticks: 0} |> announce() |> noreply()
   end
 
   def handle_call(:time, _from, state) do
@@ -76,7 +75,7 @@ defmodule StopWatch.Server do
     if not state.running do
       cancel_any_current_timer(state)
       {:ok, tref} = :timer.send_after(state.resolution, :tick)
-      announce %{state | running: true, tref: tref}
+      announce(%{state | running: true, tref: tref})
     else
       state
     end
@@ -85,7 +84,7 @@ defmodule StopWatch.Server do
   def handle_set(:running, false, state) do
     if state.running do
       cancel_any_current_timer(state)
-      announce %{state | running: false, tref: nil}
+      announce(%{state | running: false, tref: nil})
     else
       state
     end
@@ -93,7 +92,7 @@ defmodule StopWatch.Server do
 
   # handle setting "ticks" to zero to clear (hub)
   def handle_set(:ticks, 0, state) do
-    %{state | ticks: 0} |> announce
+    %{state | ticks: 0} |> announce()
   end
 
 
@@ -106,7 +105,7 @@ defmodule StopWatch.Server do
     cancel_any_current_timer(state)
     {:ok, tref} = :timer.send_after(nr, :tick)
     %{state | resolution: nr, ticks: div(cur_msec,nr), tref: tref}
-    |> announce
+    |> announce()
   end
 
   # catch-all for handling bogus properties
@@ -119,7 +118,7 @@ defmodule StopWatch.Server do
     if state.running do
       {:ok, tref} = :timer.send_after(state.resolution, :tick)
       %{state | ticks: (state.ticks + 1), tref: tref}
-      |> announce_time_only
+      |> announce_time_only()
       |> noreply
     else
       {:noreply, state}
@@ -136,26 +135,23 @@ defmodule StopWatch.Server do
     %{state | tref: nil}
   end
 
-  # announce functions (hub compatible) - returns passed
-
+  # announce all public state, return all state so piplenes easy
   defp announce(state) do
-    elements_with_keys(state, @public_state_keys)
-    |> Dict.merge(msec: (state.ticks * state.resolution))
-    |> state.announcer.()
+    Informant.update {:stop_watch, 0}, (
+      state
+      |> Map.take(@public_state_keys)
+      |> Map.merge(%{sec: (state.ticks * state.resolution)})
+    )
     state
   end
 
+  # announce just the time, return all state so pipelines easy
   defp announce_time_only(state) do
-    state.announcer.(ticks: state.ticks, msec: (state.ticks * state.resolution))
+    Informant.update {:stop_watch, 0}, %{
+      ticks: state.ticks,
+      msec: (state.ticks * state.resolution)
+    }
     state
-  end
-
-  # returns dict of elemnts from source_dict that have keys in valid_keys
-
-  defp elements_with_keys(source_dict, valid_keys) do
-    Enum.filter source_dict, fn({k, _v}) ->
-      Enum.member?(valid_keys, k)
-    end
   end
 
   # genserver response helpers to make pipe operator prettier

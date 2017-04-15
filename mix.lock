@@ -1,9 +1,9 @@
-%{"cowboy": {:hex, :cowboy, "1.0.4"},
-  "cowlib": {:hex, :cowlib, "1.0.2"},
-  "exjsx": {:hex, :exjsx, "3.2.0"},
+%{"cowboy": {:hex, :cowboy, "1.0.4", "a324a8df9f2316c833a470d918aaf73ae894278b8aa6226ce7a9bf699388f878", [:make, :rebar], [{:cowlib, "~> 1.0.0", [hex: :cowlib, optional: false]}, {:ranch, "~> 1.0", [hex: :ranch, optional: false]}]},
+  "cowlib": {:hex, :cowlib, "1.0.2", "9d769a1d062c9c3ac753096f868ca121e2730b9a377de23dec0f7e08b1df84ee", [:make], []},
+  "exjsx": {:hex, :exjsx, "3.2.0", "7136cc739ace295fc74c378f33699e5145bead4fdc1b4799822d0287489136fb", [:mix], [{:jsx, "~> 2.6.2", [hex: :jsx, optional: false]}]},
   "httpotion": {:git, "https://github.com/myfreeweb/httpotion.git", "0c96e60ef9ec58fb90efa49f8e477e1e009f334d", []},
   "ibrowse": {:hex, :ibrowse, "4.2.2"},
-  "jsx": {:hex, :jsx, "2.6.2"},
+  "jsx": {:hex, :jsx, "2.6.2", "213721e058da0587a4bce3cc8a00ff6684ced229c8f9223245c6ff2c88fbaa5a", [:mix, :rebar], []},
   "nerves_hub": {:git, "https://github.com/nerves-project/nerves_hub.git", "7348ebc186a36f88178aa7f21b1085e6de53862b", []},
   "nerves_hub_rest_api": {:git, "https://github.com/nerves-project/nerves_hub_rest_api.git", "9bdf1574ee488380abc8385702d67bed70295325", []},
-  "ranch": {:hex, :ranch, "1.2.1"}}
+  "ranch": {:hex, :ranch, "1.2.1", "a6fb992c10f2187b46ffd17ce398ddf8a54f691b81768f9ef5f461ea7e28c762", [:make], []}}
