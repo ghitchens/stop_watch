@@ -4,29 +4,36 @@ defmodule StopWatch.Server do
   A simple stopwatch GenServer used for exploring the common pattern
   of autonomous GenServers that make notifications.
 
-  Implements a basic counter with configurable resolution
-  (down to 10ms).  Implements "go", "stop", and "clear" functions.  Also
-  implements a "time" genserver call, to return the number of ms passed.
-  Also takes a "resolution" parameter (in ms).
+  Implements a basic counter with configurable resolution (down to 10ms).
+  Implements "go", "stop", and "clear" functions.  Also implements a "time"
+  genserver call, to return the number of ms passed.  Also takes a
+  "resolution" parameter (in ms).
 
-  This branch explores using *Informant* for notifications, with optional
-  connections to Hub and HubRestAPI.
+  This branch explores using *Informant* for notifications,
+  with connection to Hub and HubRestAPI.
   """
   use GenServer
 
   @public_state_keys [:ticks, :msec, :resolution, :running]
+
+  defmodule State, do: defstruct(
+    ticks: 0,
+    running: true,
+    resolution: 100,
+    delegate: nil,
+    tref: nil
+  )
 
   def start_link(params, _options \\ []) do
     # REVIEW WHY NEED NAME HERE?  Why can't pass as option?
     GenServer.start_link __MODULE__, params, name: :stop_watch
   end
 
-  def init() do
-    state=%{tref: nil, ticks: 0, running: false, resolution: 100}
-    Informant.register {StopWatch, pid}
-    announce(state)
+  def init(_) do
+    state=%State{}
     {:ok, tref} = :timer.send_after(state.resolution, :tick)
-    {:ok, %{state | tref: tref}}
+    {:ok, delegate} = Informant.publish(StopWatch, {:watch, 0}, state: public(state))
+    {:ok, %{state | tref: tref, delegate: delegate}}
   end
 
   @doc "start the stopwatch"
@@ -42,7 +49,7 @@ defmodule StopWatch.Server do
   def time(pid),  do: GenServer.call(pid, :time)
 
   @doc "set multiple attributes of the stopwatch"
-  def set(pid, changes), do: GenServer.cast(pid, {:request, :changes})
+  def set(pid, settings), do: GenServer.cast(pid, {:set, settings})
 
   # public (server) genserver handlers, which modify state
 
@@ -59,26 +66,28 @@ defmodule StopWatch.Server do
     %{state | ticks: 0} |> announce() |> noreply()
   end
 
+  def handle_cast({:set, settings}, state) do
+    {:noreply, apply_changes(settings, state)}
+  end
+
+  # GenServer handle_call callbacks
+
   def handle_call(:time, _from, state) do
     {:reply, state.ticks, state}
   end
 
-  # request handler
-
-  def handle_cast({:request, changes}, state) do
-    new_state = Enum.reduce changes, old_state, fn({k,v}, state) ->
-      handle_set(k,v,state)
-    end
-    {:noreply, new_state}
+  # handle a request from informant.  Ignore domain/topic because 
+  # we are only published under one, so can't get any requests other
+  # than for our own. 
+  def handle_cast({:request, {:changes, changes}, _}, state) do
+    IO.puts "request changes: #{inspect changes}"
+    {:noreply, apply_changes(changes, state)}
   end
 
-  # request handler (hub compatible) - replies with new state
-
-  def handle_call({:request, _path, changes, _context}, _from, old_state) do
-    new_state = Enum.reduce changes, old_state, fn({k,v}, state) ->
+  defp apply_changes(changes, old_state) do
+    Enum.reduce changes, old_state, fn({k,v}, state) ->
       handle_set(k,v,state)
     end
-    {:reply, :ok, new_state}
   end
 
   # handle setting "running" to true or false for go/stop (hub)
@@ -105,7 +114,6 @@ defmodule StopWatch.Server do
   def handle_set(:ticks, 0, state) do
     %{state | ticks: 0} |> announce()
   end
-
 
   # handle setting "resolution" (hub)
   # changes the resolution of the stopwatch.  Try to keep the current time
@@ -148,26 +156,24 @@ defmodule StopWatch.Server do
 
   # announce all public state, return all state so piplenes easy
   defp announce(state) do
-    Informant.update {:stop_watch, 0}, (
-      state
-      |> Map.take(@public_state_keys)
-      |> Map.merge(%{sec: (state.ticks * state.resolution)})
-    )
+    Informant.update state.delegate, public(state)
     state
+  end
+
+  defp public(state) do
+    state
+    |> Map.take(@public_state_keys)
+    |> Map.merge(%{sec: (state.ticks * state.resolution)})
   end
 
   # announce just the time, return all state so pipelines easy
   defp announce_time_only(state) do
-    Informant.update {:stop_watch, 0}, %{
-      ticks: state.ticks,
-      msec: (state.ticks * state.resolution)
-    }
+    Informant.update(state.delegate, %{ticks: state.ticks,
+             msec: (state.ticks * state.resolution)})
     state
   end
 
   # genserver response helpers to make pipe operator prettier
-
   defp noreply(state), do: {:noreply, state}
-  defp reply(state, reply), do: {:reply, reply, state}
 
 end
