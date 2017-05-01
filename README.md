@@ -1,6 +1,6 @@
 # StopWatch
 
-An interactive and visual exploration of distribution of shared state between Elixir processes on a node as well as via JSON/REST protocols to a web client. 
+An interactive and visual exploration of distribution of shared state between Elixir processes on a node as well as via JSON/REST protocols to a web client.
 
 Implements a "virtual stopwatch" with a Web UI that can be used to start, stop, reset, and change the timing/resolution of the stopwatch.  Multiple web clients can view and control the stopwatch simultaneously over links of various latencies and speeds.
 
@@ -19,19 +19,8 @@ At this time, StopWatch is an exploration of the following technologies...
   real time systems that share state among multiple clients, controlling a
   GenServer that implements Informant for both publishing state and control.
 - Use of Angular/Javascript to build a UI that maps to an Informant server
-  (for now, indirectly by HubRestAPI). 
+  (for now, indirectly by HubRestAPI).
 - Demonstrates use of elm-lang for client to HubRestAPI (work in progress).
-
-## See It Live
-
-http://telo.io:8888/ 
-
-- Visit it with your web browser
-- Visit it in another window of your web browser
-- Visit it on your phone as well
-- To view the elm version of the stopwatch UI (still a work in progress), go
-  to http://telo.io:8888/stopwatch.html. The elm version was built by
-  running 
 
 ## Building & Viewing On Your Machine
 
@@ -47,5 +36,18 @@ mix run --no-halt
   another device on the same LAN -- perhaps an iphone or ipad?
 - To view the elm version of the stopwatch UI (still a work in progress), go
   to http://localhost:8888/stopwatch.html. The elm version was built by
-  running 
+  running
   `elm make Stopwatch.elm --output=../web/stopwatch.html` from the `priv/elm` directory.
+
+## See It Live (but slow)
+
+  You can also see the demo on a test server, but because it is subject to the limitations of latencies, it is rather less impressive.
+
+  http://104.131.9.126:8888/
+
+  - Visit it with your web browser
+  - Visit it in another window of your web browser
+  - Visit it on your phone as well
+  - To view the elm version of the stopwatch UI (still a work in progress), go
+    to http://104.131.9.126:8888/stopwatch.html. The elm version was built by
+    running
